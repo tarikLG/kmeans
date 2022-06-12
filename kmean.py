@@ -1,6 +1,5 @@
 import random
 import imageio
-import numpy
 
 def euclid_dist(a, b):
     distance = ((a[0] - b[0])**2) + ((a[1] - b[1])**2) + ((a[2] - b[2])**2)
@@ -41,10 +40,14 @@ def kmeans(k, s):
         else:
             clusterCen = calc_clusterCent(clusters, k)
 
-    return clusterCen
+    return (clusterCen, clusters)
 
 im = imageio.v2.imread('testimg.jpg')
 
 im = im.reshape(im.shape[0]*im.shape[1],im.shape[2])
 
-print(kmeans(5, im.tolist()))
+# first element is the cluster centers and the second element is the clusters themselves
+
+final_clusters = kmeans(5, im.tolist())
+
+print(final_clusters[0])
