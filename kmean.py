@@ -16,7 +16,7 @@ def calc_clusterCent(x, k):
             center[1] += p[1]
             center[2] += p[2]
         for n in center:
-            center[center.index(n)] = n/len(c)
+            center[center.index(n)] = int(n/len(c))
         calculated.append(center)
         
     return calculated
@@ -46,7 +46,5 @@ def kmeans(k, s):
 im = imageio.v2.imread('testimg.jpg')
 
 im = im.reshape(im.shape[0]*im.shape[1],im.shape[2])
-
-print(im.shape)
 
 print(kmeans(5, im.tolist()))
